@@ -1,0 +1,73 @@
+---
+import MyHand from '../images/myhand4.png';
+import YourHand from '../images/yourhand.png';
+import ShakeHands from '../images/shakehand1.png'
+---
+<section class="wellcom">
+    <img src={MyHand.src} alt="my hand" class="my-hand">
+
+    <span class="start-shaking">click the hand <span class="puppy-arrow">&#8595;</span></span>
+    <img src={YourHand.src} alt="your hand" class="your-hand">
+
+    <img src={ShakeHands.src} alt="shake hand" class="shake-hands">
+    <span class="meet">nice to meet you(✯◡✯)</span>
+
+
+</section>
+
+<script>
+     //hand shake animation-------------------------
+     const arrowPointer = document.querySelector('.start-shaking span');
+const yourHand = document.querySelector('.your-hand');
+const myHand = document.querySelector('.my-hand');
+const salamHand = document.querySelector('.shake-hands');
+const salamText = document.querySelector('.meet');
+let salamTl , masterTl;
+
+ gsap.set((salamHand),{autoAlpha:0})
+gsap.set((salamText),{autoAlpha:0})
+
+function salamAnimation(){
+    salamTl =gsap.timeline({yoyo:true,repeat:1, paused: true,repeatDelay:1});
+    salamTl
+    .to(myHand,{rotate:10,left:'45%',top:'70%' ,scale:.4,duration:.6},'start')
+           .to(myHand,{autoAlpha:0,duration:.1})
+          .to(yourHand,{rotate:10,right:'45%',top:'70%' ,scale:.4,duration:.6},'start')
+          .to(yourHand,{autoAlpha:0,duration:0},'middle')
+          .to(myHand,{autoAlpha:0,duration:0},'middle')
+           .to(salamHand,{autoAlpha:1,bottom:-10,duration:.1},'middle-=.2')
+           .to(salamHand,{bottom:10,duration:.1})
+        
+           .to(salamText,{autoAlpha:1 ,duration:.4,ease:Linear.easeNone},'middle-=.2')
+return salamTl;
+}
+
+salamAnimation()
+if(!salamTl.isActive())  {
+    if(arrowPointer!=null){
+    arrowPointer.classList.add('puppy-arrow');
+}
+    }
+    if(myHand != null){
+    myHand.addEventListener("click",salam )
+    }
+if(yourHand != null){
+    yourHand.addEventListener("click",salam )
+}
+
+let i=0
+function salam(){
+   i++
+    salamTl.restart();console.log('woo')
+    arrowPointer.classList.remove('puppy-arrow');
+    setTimeout(()=>{ arrowPointer.classList.add('puppy-arrow');},2000)
+if(i==1){
+    salamText.innerHTML = "nice to meet you (*^^*);";
+}else if(i==2){
+    salamText.innerHTML = "what's up friend (o^▽^o);";
+}else if(i==3){
+    salamText.innerHTML = 'wanna talk more!  (✯◡✯);<a href="#contact-me" class="">click here </a>';
+    i=0
+}
+}
+</script>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="70" viewBox="0 0 100 70" >
+    <title>menu bar</title>
+  <line x1="10" y1="10" x2="80" y2="10" stroke="#FF8C28" stroke-width="7" stroke-linecap="round" />
+  <line x1="10" y1="35" x2="80" y2="35" stroke="#FF8C28" stroke-width="7" stroke-linecap="round" />
+  <line x1="10" y1="60" x2="80" y2="60" stroke="#FF8C28" stroke-width="7" stroke-linecap="round" />
+
+</svg>

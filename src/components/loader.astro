@@ -1,0 +1,113 @@
+
+<div id="preloader">
+    <div class="preloader-inner">
+        <p id="preloader-caoMoji" class="show">( ^_* );</p>
+        <p id="preloader-text">Salwa is Coding
+
+            <span class="loader-dot"></span>
+            <span class="loader-dot"></span>
+            <span class="loader-dot"></span>
+        </p>
+    </div>
+</div>
+<style>
+    /* ------preloader stylings---------- */
+#preloader{
+	position:fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 3000;
+	background-color: rgb(7, 29, 54);
+
+}
+.preloader-inner{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	/* width: fit-content; */
+	display: table;
+	transform: translate3d(-50%,0,0);
+	color: white;
+	text-transform: capitalize;
+	text-align: center;
+
+}
+#preloader-caoMoji{
+	opacity: 100%;
+
+}
+#preloader-caoMoji.show{
+	animation: show-kao .2s ease 0  1 normal forwards;
+	
+}
+@keyframes show-kao {
+	0%,100%{
+		opacity: 10%;
+	}
+	50%{
+		opacity: 100%;
+	}
+}
+.loader-dot{
+	display: inline-block;
+	background-color: white;
+	height: 3px;
+	width: 3px;
+	border-radius: 50%;
+	margin: 0 3px;
+	/* line-height: 0; */
+
+}
+.loader-dot:nth-child(1) {
+	animation: preloader .6s ease-in-out alternate infinite;
+  }
+  .loader-dot:nth-child(2) {
+	animation: preloader .6s ease-in-out alternate .2s infinite;
+  }
+  
+  .loader-dot:nth-child(3) {
+	animation: preloader .6s ease-in-out alternate .4s infinite;
+  }
+  
+  @keyframes preloader {
+	100% { transform: scale(2); }
+  }
+</style>
+<script >
+		
+	// console.log('preloader.js is working')
+	const caoMoji=['(＠＾▽＾＠);','(* ^ ^ *);','（>﹏<）;','( *﹏* );','( ^_* );',
+					'(o^▽^o);','ヽ(o^ ^o)ﾉ;','(◕‿◕);','(✯◡✯);','( T﹏T );'];
+	// const random= Math.floor(Math.random() * caoMoji.length-1)
+	const preloaderElemnt =document.getElementById('preloader-caoMoji');
+	const waitingDots =document.getElementsByClassName('loader-dot');
+	const mywaitingDots =Array.prototype.slice.call(waitingDots);
+	const preloadContainter = document.getElementById('preloader');
+	const page =document.getElementById('page');
+
+	function isLoading(){
+	
+		const random= Math.floor(Math.random() * caoMoji.length);
+		preloaderElemnt.innerHTML=`${caoMoji[random]}`
+		// console.log(random)
+	}
+
+	let load = setInterval(isLoading,500)
+
+
+
+	function doneLoading(){
+		mywaitingDots.forEach((dot)=>{
+			dot.style.animation = "unset";
+		})
+		clearInterval(load);
+		preloadContainter.style.display = "none"
+		page.classList.remove('stop-animation');
+	}
+
+
+	window.onload = doneLoading
+	
+	</script>

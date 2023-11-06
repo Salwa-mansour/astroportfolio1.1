@@ -1,0 +1,88 @@
+<section class="my-skills" id="my-skills">
+    <h2 class="section-title">my skills ヽ(o^ ^o)ﾉ</h2>
+    <div class="skill-borgress-circles">
+
+        <div class="skill ">
+
+            <svg version="1.1" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#051627" stroke-width="10"></circle>
+                <circle class="circle-path P-98" cx="50" cy="50" r="40" fill="none" stroke="#FF8C28"
+                    stroke-width="10"></circle>
+                <text x="35" y="58" fill="white">98%</text>
+            </svg>
+
+            <span class="skill-title">HTML</span>
+        </div>
+        <div class="skill ">
+
+            <svg version="1.1" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#051627" stroke-width="10"></circle>
+                <circle class="circle-path P-95" cx="50" cy="50" r="40" fill="none" stroke="#FF8C28"
+                    stroke-width="10"></circle>
+                <text x="35" y="58" fill="white">95%</text>
+            </svg>
+
+            <span class="skill-title">CSS</span>
+        </div>
+        <div class="skill ">
+
+            <svg version="1.1" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#051627" stroke-width="10"></circle>
+                <circle class="circle-path P-60" cx="50" cy="50" r="40" fill="none" stroke="#FF8C28"
+                    stroke-width="10"></circle>
+                <text x="35" y="58" fill="white">60%</text>
+            </svg>
+
+            <span class="skill-title">JavaScript</span>
+        </div>
+
+        <div class="skill ">
+
+            <svg version="1.1" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#051627" stroke-width="10"></circle>
+                <circle class="circle-path P-70" cx="50" cy="50" r="40" fill="none" stroke="#FF8C28"
+                    stroke-width="10"></circle>
+                <text x="35" y="58" fill="white">70%</text>
+            </svg>
+
+            <span class="skill-title">GSAP</span>
+        </div>
+        <div class="skill ">
+
+            <svg version="1.1" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#051627" stroke-width="10"></circle>
+                <circle class="circle-path P-80" cx="50" cy="50" r="40" fill="none" stroke="#FF8C28"
+                    stroke-width="10"></circle>
+                <text x="35" y="58" fill="white">80%</text>
+            </svg>
+
+            <span class="skill-title">WordPress</span>
+        </div>
+
+
+    </div><!-- skill-borgress-circles-->
+</section>
+
+<script>
+      const circlePaths = gsap.utils.toArray('.circle-path');
+  
+  circlePaths.forEach((cirlce) => {
+    gsap.to(cirlce, {
+      // strokeDasharray:'5 5',
+      scrollTrigger:{
+        trigger:"#my-skills",
+       
+        start:`top 90%`,
+        end:"bottom bottom+100px ",
+        toggleActions:'restart reverse none none',  
+        toggleClass:{targets: cirlce, className: "movePath"},   
+      //  markers:true,
+        }
+    });
+  });
+</script>

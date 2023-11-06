@@ -1,0 +1,80 @@
+---
+import ByMeCoffey from "./byMeCoffey.astro";
+---
+<section class="contact-me" id="contact-me">
+
+    <div id="block-10" class="widget-contact widget_block">
+        <!-- <form action="https://formspree.io/f/mrgjajep" method="POST" class="forms-pre" > -->
+        <!-- <form data-netlify="true" 
+        
+             action="" name="contact_me" method="POST" class="forms-pre"  >
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="text" name="_sender_name" placeholder="Name" required>
+                <input type="email" name="_replyto" placeholder="Email" required>
+                <textarea name="message" placeholder="Type your message" required cols="40" rows="10"></textarea>
+                <div class="re-chapcha2" data-netlify-recaptcha="true" ></div>
+                <input type="submit" name="submit" value="send"></input>
+            </div> -->
+        <form action="./thankyou.html" name="contact" method="POST" data-netlify="true" class="forms-pre">
+            <div id="block-12 " class="rotate-right widget-contact widget_block">
+                <h2 class="">contact me (o^▽^o);</h2>
+            </div>
+            <div id="block-13" class="widget-contact widget_block widget_text rotate-left">
+                <p>Have a question or want to work together?</p>
+            </div>
+            <input type="text" placeholder="name" name="name" class="rotate-right">
+            <input type="email" placeholder="email" name="email" class="rotate-left">
+
+            <textarea name="message" id="" cols="40" rows="10" placeholder="message"
+                class="rotate-right"></textarea>
+
+            <!-- <div data-netlify-recaptcha="true" class="re-chapcha2"></div> -->
+
+            <button type="submit" class="btn"> Send </button>
+        </form>
+    </div>
+</section>
+
+<ByMeCoffey />
+
+<script>
+
+const linesLeft = gsap.utils.toArray('.rotate-left');
+const linesRight = gsap.utils.toArray('.rotate-right');
+linesLeft.forEach(line=>{
+   gsap.fromTo(line,
+     {rotate:"-40deg",x:-800,opacity:0}
+  ,{  
+      rotate:"0",
+      x:0,
+      opacity:1,
+      scrollTrigger:{
+      trigger:"#contact-me",
+      scrub:.5,
+      start:`top bottom+=150`,
+      end:"center 60%",
+      toggleActions:'restart reverse none none',      
+      // markers:true,
+      }
+   })
+  })
+  linesRight.forEach(line=>{
+   gsap.fromTo(line,
+     { rotate:"40deg",x:800,opacity:0}
+  ,{ 
+      rotate:"0",
+      x:0,
+      opacity:1,
+      scrollTrigger:{
+      trigger:"#contact-me",
+      scrub:.5,
+      start:`top bottom+=150`,
+      end:"center 60%",
+      toggleActions:'restart reverse none none',      
+   // markers:true
+      }
+   })
+  })
+  
+
+</script>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<style>
+path[id^="primary"] {
+	<!-- transform: rotate(-90deg);
+	transform-origin: 50% 50%; -->
+	   stroke-dasharray:16;
+	  stroke-dashoffset:16;
+	 
+	 }
+   .drow{
+     animation: drow1 1s linear forwards;
+   }
+   @keyframes drow1 {
+    to {
+      stroke-dashoffset:0;
+    }
+</style>
+
+  <g id="quality-5" transform="translate(-2 -2)">
+    <circle id="secondary" fill="#2ca9bc" cx="7" cy="7" r="7" transform="translate(5 3)"/>
+    <path id="primary" d="M10,10l1.33,1.5L14,8.5" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="primary-2 " data-name="primary" d="M5.79,13.57,3,17.56l3.03.9L7.91,21l2.88-4.11" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="primary-3" data-name="primary" d="M18.21,13.57,21,17.56l-3.03.9L16.09,21l-2.88-4.11" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <circle id="primary-4" data-name="primary" cx="7" cy="7" r="7" transform="translate(5 3)" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+
+  	<script src="../js/gsap.js"   ></script>
+
+  <script>
+  let checkPaths = document.querySelectorAll("path[id^='primary']","circle")
+  console.log(checkPaths)
+checkPaths.forEach(element => {
+  element.classList.add('drow')
+});
+let tewwn= gsap.to('secondary',{fill:'red'})
+<!-- function absorvingCards(targetArr) {
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle('drow', entry.isIntersecting)
+                console.log(entry)
+            })
+        }
+        , {
+            threshold: 1,
+            //rootMargin:"-200px"
+        }
+
+    )
+    targetArr.forEach(card => {
+        observer.observe(card)
+    })
+
+}
+  absorvingCards(checkPaths) -->
+  </script>
+</svg>

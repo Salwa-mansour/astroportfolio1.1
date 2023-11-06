@@ -1,0 +1,35 @@
+---
+import coffImg from '../images/bymecoff.svg'
+
+---
+
+<a href="https://www.buymeacoffee.com/salwacoding" id="bymeCoffee" title="By Me A Coffee">
+
+    <img src={coffImg.src} alt="">
+    <svg version="1.1" width="100" height="100" id="circle-text" xmlns="http://www.w3.org/2000/svg">
+        <text>
+            <textPath xlink:href="#half-cicle" stroke="black" letter-spacing="2">By Me Coffee</textPath>
+        </text>
+
+        <defs>
+            <path d="M 10 50 A 35 40 0 0 0 90 50" fill="none" stroke="red" class="path" id="half-cicle">
+            </path>
+
+        </defs>
+
+    </svg>
+</a>
+
+<script>
+      gsap.set('#circle-text',{rotate:25})
+  
+  let tween = gsap.to('#circle-text',
+  {rotate:-25,
+    ease: Bounce. easeOut,
+    duration:1.5,
+     scrollTrigger:{
+  trigger:'#bymeCoffee',
+  //toggleActions:'restart reverse none none',
+  //markers:true
+  }})
+</script>

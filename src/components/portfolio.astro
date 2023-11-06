@@ -1,0 +1,72 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+
+// Get all entries from a collection.
+// Requires the name of the collection as an argument.
+// Example: retrieve `src/content/blog/**`
+const projects = await getCollection('projects');
+
+---
+
+<main id="primary" class="site-main">
+    <section id="articles">
+
+        <h1 class="section-title ">my works (＠＾▽＾＠);</h1>
+        <div class="inner-flex">
+            {
+                projects.map(project=>(
+                
+                    
+
+            <div class="inview-container">
+                <article class="home-article-box box-initial-position  post ">
+
+                    <a class="post-thumbnail" href={`/${project.data.slug}`} aria-hidden="true"
+                        tabindex="-1">
+                        <img  src={project.data.cover}
+                            class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+                            alt={`${project.data.title} image`} /> </a>
+                    <header class="entry-header">
+
+                        <a href={`/${project.data.slug}`} >
+                            <span class="view-text">{project.data.title}</span>
+                        </a>
+                    </header><!-- .entry-header -->
+
+
+
+                </article><!-- #post-1 -->
+
+            </div>
+            <!--.inview-container-->
+                    
+                ))
+            }
+
+
+          
+         
+          
+        </div>
+       
+
+        <script>
+            const boxes = gsap.utils.toArray('.home-article-box');
+            if(boxes !=null){
+boxes.forEach(box => {
+
+    gsap.to(box, { 
+      duration:.25,
+      scrollTrigger:{
+          trigger:box,
+          start:"top 40%",
+          end:"center 0%",
+          toggleActions:'restart reverse none none',
+      //   markers:true,
+          toggleClass:"box-inview-position"
+      }
+    })
+  });
+  }
+  
+        </script>
