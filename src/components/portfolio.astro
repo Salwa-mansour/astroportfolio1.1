@@ -21,14 +21,14 @@ const projects = await getCollection('projects');
             <div class="inview-container">
                 <article class="home-article-box box-initial-position  post ">
 
-                    <a class="post-thumbnail" href={`/${project.data.slug}`} aria-hidden="true"
+                    <a class="post-thumbnail" href={`/${project.slug}`} aria-hidden="true"
                         tabindex="-1">
-                        <img  src={project.data.cover}
+                        <img  src={project.data.cover.src}
                             class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
                             alt={`${project.data.title} image`} /> </a>
                     <header class="entry-header">
 
-                        <a href={`/${project.data.slug}`} >
+                        <a href={`/${project.slug}`} >
                             <span class="view-text">{project.data.title}</span>
                         </a>
                     </header><!-- .entry-header -->
