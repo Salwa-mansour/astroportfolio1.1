@@ -20,3 +20,9 @@ export async function  getStaticPaths(){
 
 //const {Content , data}= Astro.props.project;
 ---
+<Layout title={project.data.title} >
+
+    <Content/>
+    <!-- {project.slug.prev ? <a href={project.slug.prev}>Previous</a> : null}
+    {project.slug.next ? <a href={project.slug.next}>Next</a> : null} -->
+</Layout>

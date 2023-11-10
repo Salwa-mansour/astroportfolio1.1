@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+const { post } = Astro.props;
+const { Content } = await post.render();
+ 
+export async function  getStaticPaths(){
+   
+ const posts= await getCollection('posts');
+    return posts.map(post =>({
+        params:{
+            slug: post.slug
+        },
+        props:{
+            post
+        }
+    }));
+} 
+
+//const {Content , data}= Astro.props.project;
+---
+<Layout title={project.data.title} >
+
+    <Content/>
+    <!-- {project.slug.prev ? <a href={project.slug.prev}>Previous</a> : null}
+    {project.slug.next ? <a href={project.slug.next}>Next</a> : null} -->
+</Layout>
