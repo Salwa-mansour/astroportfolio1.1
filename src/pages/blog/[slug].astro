@@ -18,11 +18,11 @@ export async function  getStaticPaths(){
     }));
 } 
 
-//const {Content , data}= Astro.props.project;
+//const {Content , data}= Astro.props.post;
 ---
-<Layout title={project.data.title} >
+<Layout title={post.data.title} >
 
     <Content/>
-    <!-- {project.slug.prev ? <a href={project.slug.prev}>Previous</a> : null}
-    {project.slug.next ? <a href={project.slug.next}>Next</a> : null} -->
+    <!-- {post.slug.prev ? <a href={post.slug.prev}>Previous</a> : null}
+    {post.slug.next ? <a href={post.slug.next}>Next</a> : null} -->
 </Layout>
