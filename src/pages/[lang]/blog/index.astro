@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const posts = (await getCollection("posts", (entry) => entry.slug.startsWith(`${lang}/`)))
+	
+	.map((post) => {
+		return {
+			href: lang + "/blog" + post.slug + "/",
+			...post,
+		};
+	});
+---
+
+{
+	posts.map((post) => (
+		<h2>
+			<a href={`/${lang}/blog/${post.slug}`}>{post.data.title}</a>
+		</h2>
+	))
+}
