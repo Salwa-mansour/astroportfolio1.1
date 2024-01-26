@@ -14,14 +14,16 @@ export interface Props{
 const {title ="Salwa Coding",
 	   hasHeader=true,
 	   hasForm=true} = Astro.props as Props;
----
+	   import { getLangFromUrl } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+---
 <!DOCTYPE html>
-<html lang="en" >
+<html lang={lang} >
 <head>
 	<meta charset="UTF-8">
 
-    <meta http-equiv="refresh" content="0;url=/en/" />
+    <!-- <meta http-equiv="refresh" content="0;url=/en/" /> -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta property="og:title" content="Salwa Coding Website" />
