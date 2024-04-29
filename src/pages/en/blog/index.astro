@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getLangFromUrl, useTranslations } from './../../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -8,7 +8,7 @@ const posts = (await getCollection("posts", (entry) => entry.id.startsWith(`${la
 	
 	.map((post) => {
 		return {
-			href: lang + "/blog" + "/",
+			href:`/${lang}/blog/`+ post.slug.replace(`${lang}/`, ""),
 			...post,
 		};
 	});
@@ -17,7 +17,7 @@ const posts = (await getCollection("posts", (entry) => entry.id.startsWith(`${la
 {
 	posts.map((post) => (
 		<h3>
-			<a href={`/${lang}/blog/${post.slug}`}>{post.data.title}</a>
+			<a href={`${post.href}`}>{post.data.title}</a>
 		</h3>
 	))
 }
