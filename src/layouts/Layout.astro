@@ -3,6 +3,7 @@ import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
 import Loader from '../components/loader.astro';
 import ContactForm from '../components/contactForm.astro';
+import LanguagePicker from '../components/LanguagePicker.astro';
 // import Icon from '../images/icon.JPG';
 import '../css/main.css';
 export interface Props{
@@ -47,7 +48,11 @@ const lang = getLangFromUrl(Astro.url);
 
 <body class="home blog hfeed">
 	<!-- <Loader/> -->
-	{hasHeader && <Header/>}
+	{hasHeader &&
+	 <Header>
+     <LanguagePicker/> 
+	</Header>
+	}
 	<div id="page" class="site stop-animation">
 	<slot/>
 	{hasForm && <ContactForm/>}

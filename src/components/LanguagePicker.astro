@@ -1,0 +1,28 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+// The current page's slug.
+const slug = Astro.url.pathname;
+const currentLang = getLangFromUrl(Astro.url);
+---
+<div id="langPicker">
+
+  {Object.entries(languages)
+  .filter(([lang])=> (lang !== currentLang))
+  .map(([lang, label]) => (
+      <a href = {slug.replace(`${currentLang}`, `${lang}`) }>{"🌐"+label}</a>
+  ))}
+</div>
+
+<style>
+#langPicker{
+    outline: 1px solid red;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50vw;
+ 
+  z-index: 300;
+}
+</style>

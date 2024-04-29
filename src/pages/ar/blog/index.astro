@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+import Layout from '../../../layouts/Layout.astro';
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -13,6 +16,7 @@ const posts = (await getCollection("posts", (entry) => entry.id.startsWith(`${la
 	});
 	
 ---
+<Layout title="Salwa Coding" hasForm={false} >
 <h1>arablic blog</h1>
 {
 	posts.map((post) => (
@@ -21,4 +25,4 @@ const posts = (await getCollection("posts", (entry) => entry.id.startsWith(`${la
 		</h3>
 	))
 }
-
+</Layout>

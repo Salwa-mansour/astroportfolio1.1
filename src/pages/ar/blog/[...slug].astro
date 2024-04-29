@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
+import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const postsPages = await getCollection('posts',({ id }) => {
@@ -19,6 +20,9 @@ const postPage = Astro.props;
 
 const { Content } = await postPage.render();
 ---
+
+<Layout title={postPage.data.title} >
 <h1>{postPage.data.title}</h1>
 <!-- <p>by {page.data.author} • {formattedDate}</p> -->
 <Content/>
+</Layout>
