@@ -45,7 +45,7 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
     <div id="scroll-progress"></div>
 </div>
 <style>
-    @-moz-keyframes marquee {
+    /* @-moz-keyframes marquee {
 	0% {
 	  transform: translateX(100%);
 	}
@@ -63,9 +63,7 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
   }
   @keyframes marquee {
 	0% {
-	  /* -moz-transform: translateX(100%);
-	  -webkit-transform: translateX(100%);
-	  transform: translateX(100%) */
+	
 	  left: -20%;
 	}
 	100% {
@@ -74,20 +72,20 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
 	  transform: translateX(-100%);
 	  left: 120%;
 	}
-  }
+  } */
 /* scroll progress bar------ */
-#scroll-progress {
+/* #scroll-progress {
 	position: absolute;
 	bottom: 0;
 	width: 0%;
 	height: 4px;
 	background: #FF8C28;
 	z-index: 10000;
-}
+} */
 
 /* menu styling----------------- */
-.main-navigation ul.primary-menu {
-	padding-top: 5rem;
+/*.main-navigation ul.primary-menu {
+	 padding-top: 5rem;
 	position: absolute;
 
 	background-color: transparent;
@@ -104,12 +102,12 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
 	width: 50%;
 	border-bottom: 1px solid rgba(7, 29, 54, 0.8);
 		transition: border-width .1s ease-in-out;
-	/* outline: 1px solid red; */
+	
 	width:100%;
 }
 
 .main-navigation.toggled ul.primary-menu li a {
-	/* outline: 1px solid green; */
+	
 	padding: 1rem;
 	text-transform: capitalize;
 	border-left: 2px solid rgba(7, 29, 54, 0.8);
@@ -134,7 +132,7 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
 	position: fixed;
 	top: 0;
 	right: 0;
-	/* margin:3.5vw 3vw; */
+
 	z-index: 2000;
 }
 
@@ -152,22 +150,23 @@ button.menu-toggle .dashicons-menu-alt:before {
 	left: 0;
 }
 
-/* html, */
+
 .scroll-disapple {
 	overflow-x: hidden;
 	overflow-y: hidden;
-	/* width: 100%;
-	height: 100%; */
+	
+	
 
-}
-.scroll-disapple .page-rotate{
-	/* set proper hight to the contat to get equal rotate in all pages it doesnt need to be spisfic value as the overflow well be hidden */
+} */
+/* set proper hight to the contat to get equal rotate in all pages it doesnt need to be spisfic value as the overflow well be hidden */
+/* .scroll-disapple .page-rotate{
+	
 	height: 176rem;
 }
 .page-rotate
  {
 
-	/* transform-origin:bottom left; */
+
 	transform: translateX(-30vw) rotate(10deg);
 }
 .single-work.page-rotate{
@@ -188,9 +187,9 @@ button.menu-toggle .dashicons-menu-alt:before {
 @media screen and (min-width: 34.5em) {
 
 	.page-rotate{
-		/* transform-origin: 60% 40%; */
+	
 		transform: translateX(5%) translateY(1.75%) rotate(5deg);
-		/* outline: 1px solid red; */
+	
 	}
 	.single-work.page-rotate{
 		transform: translateX(22vw) translateY(7%) rotate(10deg);
@@ -200,9 +199,9 @@ button.menu-toggle .dashicons-menu-alt:before {
 
 @media screen and (max-width:47.5rem) {
 	.page-rotate{
-		/* transform-origin: 60% 40%; */
+	
 		transform: translateX(2rem) translateY(1vw) rotate(5deg);
-		/* outline: 1px solid red; */
+	
 	}
 	.single-work.page-rotate{
 		transform: translateX(22vw) translateY(7%) rotate(10deg);
@@ -219,11 +218,12 @@ button.menu-toggle .dashicons-menu-alt:before {
 		display: table;
 		margin: auto;
 	}
-}
+} */
 
 </style>
 
 <script>
+	
      gsap.to("#scroll-progress",{
        width: "100%",
       scrollTrigger:{

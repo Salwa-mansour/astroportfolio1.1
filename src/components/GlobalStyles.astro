@@ -1,0 +1,24 @@
+<style is:global>
+    /* Unscoped, delivered as-is to the browser.
+       Applies to all <h1> tags on your site. */
+    *{
+        /* outline: 1px solid green; */
+    }
+    :root{
+        --main-background-lighter:hsl(208, 79%, 15%);
+        /* --main-background-lighter:hsl(28, 100%, 99%); */
+        --main-background-darker:hsl(221, 39%, 11%);
+        /* --main-background-darker:hsl(28, 100%, 97%); */
+        --heading-font-color:hsl(28, 100%, 58%);
+        --font-color:#fff;
+    }
+    body{
+        /* background-color: var(--main-background-1); */
+        background-image: radial-gradient(circle, var(--main-background-lighter) 0%, var(--main-background-darker));
+        color: var(--font-color);
+
+    }
+    h1{
+        color: var(--heading-font-color);
+    }
+</style>

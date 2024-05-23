@@ -5,8 +5,10 @@ import { getLangFromUrl } from '../i18n/utils';
 // The current page's slug.
 const slug = Astro.url.pathname;
 const currentLang = getLangFromUrl(Astro.url);
+const show  = slug.includes('blog');
+console.log(show )
 ---
-<div id="langPicker">
+<div id="langPicker" >
 
   {Object.entries(languages)
   .filter(([lang])=> (lang !== currentLang))
@@ -16,8 +18,9 @@ const currentLang = getLangFromUrl(Astro.url);
 </div>
 
 <style>
+
 #langPicker{
-    outline: 1px solid red;
+  
   width: 100px;
   height: 100px;
   position: absolute;
