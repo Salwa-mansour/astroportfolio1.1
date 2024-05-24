@@ -6,6 +6,7 @@ import Footer from '../components/footer.astro';
 import Loader from '../components/loader.astro';
 import ContactForm from '../components/contactForm.astro';
 import LanguagePicker from '../components/LanguagePicker.astro';
+import DarkToggler from '../components/darkToggler.astro';
 // import Icon from '../images/icon.JPG';
 // import '../css/main.css';
 import { getLangFromUrl } from '../i18n/utils';
@@ -60,6 +61,7 @@ const {title ="Salwa Coding",
 	<!-- <Loader/> -->
 	{hasHeader &&
 	 <Header>
+	 <DarkToggler/>
   { showLangPicker && <LanguagePicker/> }
 	</Header>
 	}
