@@ -10,15 +10,43 @@
         --main-background-darker:hsl(221, 39%, 11%);
         /* --main-background-darker:hsl(28, 100%, 97%); #FAF9F6 */
         --heading-font-color:hsl(28, 100%, 58%);
-        --font-color:#fff;
+        --font-color:hsl(28, 100%, 99%);
+        --body-rotation:10deg;
     }
     body{
-        /* background-color: var(--main-background-1); */
-        background-image: radial-gradient(circle, var(--main-background-lighter) 0%, var(--main-background-darker));
-        color: var(--font-color);
-
+      
+       
+    }
+    #page{
+     position: relative;
+     outline: 1px solid red;
+    opacity: .8;
+    transform: rotate(var(--body-rotation));
+    background-image: radial-gradient(circle, var(--main-background-lighter) 0%, var(--main-background-darker));
+    color: var(--font-color);
     }
     h1{
         color: var(--heading-font-color);
+    }
+    *,
+    *::after,
+    *::before{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* Normlize */
+    ul{
+        list-style: none;
+
+    }
+    a{
+        text-decoration: none;
+        color: var(--font-color);
+    }
+    button{
+        outline: 0;
+        border: none;
+        background-color: transparent;
     }
 </style>

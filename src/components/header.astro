@@ -1,53 +1,163 @@
 ---
+import { getLangFromUrl } from '../i18n/utils';
+
 import MenuBar from '../Svgs/menu-bar.svg';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import DarkToggler from '../components/darkToggler.astro';
+const lang = getLangFromUrl(Astro.url);
+const slug = Astro.url.pathname;
+const showLangPicker = slug.includes('blog');
 ---
-
-<nav id="site-navigation" class="main-navigation">
-    <a href="#top-back"><button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-        
-        <object data={MenuBar.src} type="image/svg+xml" width="50" height="50"></object>
-    </button></a>
+<header id="global-header">
+	<a href="/" class="logo">
+		<!-- consider replace logo svg with object for more clean code -->
+		<svg version="1.1" id="salwa-coding" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100" height="80" viewBox="0 0 450 450"
+			xml:space="preserve">
+			<g class="face">
+				<path id="start-curve" fill="#fff" stroke-width="2" d="M59.62,335.79c-31.64-20.85-45.78-54.82-45.78-93.46v-0.15c0-38.49,14.14-72.02,45.78-93.31l4.37,5.1
+                     c-21.72,18.08-33.82,51.9-33.82,88.35c0,36.6,12.54,70.71,33.82,88.65L59.62,335.79z" />
+				<path id="smile-eye" fill="#fff" stroke-width="2"
+					d="M166.04,255.17l-32.95-73.04L100,255.17H87.46l40.97-87.48h10.06l40.97,87.48H166.04z" />
+				<path id="mouth" fill="#fff" stroke-width="2" d="M193.3,326.46v-10.64h106.14v10.64H193.3z" />
+				<path id="star-eye" fill="#FF8C28" transform-origin="150px 70px" d="M349.74,200.78l8.31,29.45l-5.1,2.19l-15.31-27.85l-26.24,16.33l-3.21-4.81l22.02-20.27l-22.45-22.02l3.21-4.52l26.24,17.2
+ 					l12.54-28.43l5.39,1.31l-5.83,29.89l28.87,0.58v5.54L349.74,200.78z" />
+				<path id="end-curve" fill="#fff" stroke-width="2" d="M446.4,242.63c0,38.34-13.85,71.73-46.07,93.16l-4.23-4.81c21.87-18.37,33.97-52.05,33.97-88.65
+ 					c0-36.45-12.98-71.15-33.97-88.5l4.23-4.96c32.08,21.43,46.07,54.82,46.07,93.46V242.63z" />
+				<path id="smai-colon" fill="#fff" stroke-width="2" d="M482.7,271.21c8.02,0,20.56,8.75,20.56,23.76c0,17.06-15.75,26.68-29.74,30.62l-2.04-6.56
+ 					c10.79-4.37,16.91-10.21,16.91-18.52c0-7.44-6.12-12.54-14-14.43c-1.02,0-2.92-1.9-2.92-5.69c0-5.54,5.39-9.18,10.93-9.18H482.7z
+ 					M487.07,212.45c7.29,0,12.54,5.25,12.54,12.98c0,7.58-5.25,12.98-12.68,12.98s-12.83-5.39-12.83-12.98
+ 					c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
+			</g>
+		</svg>
+	</a>
+	<nav class="main-nav">
+		<ul class="main-menu">
+			<li class="menu-item">
+				<DarkToggler/>
+			</li>
+		
+		   {showLangPicker &&
+		    <li class="menu-item">
+				<LanguagePicker/>
+			</li>}
+			<!-- blog link -->
+			<li class="menu-item blog">
+				<a href=`/${lang}/blog` >blog</a>
+			</li>
+			<li class="menu-item">
+				<button class="more-links">
+					<object data={MenuBar.src} type="image/svg+xml" width="50" height="50"></object>
+				</button>
+			</li>
+		</ul>
+	</nav>
+	<nav class="secondary-nav">
+		<button id="close-menu">✖</button>
+		<ul class="secondary-menu">
+			<li class="menu-item blog">
+				<a href=`/${lang}/blog` >blog</a>
+			</li>
+			<li class="menu-item"><a href="#top-back"> about me</a></li>
+			<li class="menu-item"><a href="#articles"> my work</a></li>
+			<li class="menu-item"><a href="#my-skills"> my skills</a></li>
+			<li class="menu-item"><a href="#contact-me"> contact me</a></li>
 	
-    <ul class="primary-menu">
-        <li class="menu-item"><a href="#top-back"> about me</a></li>
-        <li class="menu-item"><a href="#articles"> my work</a></li>
-        <li class="menu-item"><a href="#my-skills"> my skills</a></li>
-        <li class="menu-item"><a href="#contact-me"> contact me</a></li>
+		</ul>
+	</nav>
+	<div id="scroll-progress"></div>
+</header>
+<!-- ------------------------ -->
+<!-- <nav id="site-navigation" class="main-navigation">
+	<a href="#top-back"><button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 
-    </ul>
-</nav><!-- #site-navigation -->
+			<object data={MenuBar.src} type="image/svg+xml" width="50" height="50"></object>
+		</button></a>
+
+	<ul class="primary-menu">
+		<li class="menu-item"><a href="#top-back"> about me</a></li>
+		<li class="menu-item"><a href="#articles"> my work</a></li>
+		<li class="menu-item"><a href="#my-skills"> my skills</a></li>
+		<li class="menu-item"><a href="#contact-me"> contact me</a></li>
+
+	</ul>
+</nav>
 <div class="nav-container">
-    <a href="/">
-        <!-- <h1 class="site-icon">(^_<span class="rotate eye">*</span> );</h1> -->
-
-        <svg version="1.1" id="salwa-coding" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100" height="80"
-            viewBox="0 0 450 450" xml:space="preserve">
-            <g class="face">
-                <path id="start-curve" fill="#fff" stroke-width="2" d="M59.62,335.79c-31.64-20.85-45.78-54.82-45.78-93.46v-0.15c0-38.49,14.14-72.02,45.78-93.31l4.37,5.1
-     c-21.72,18.08-33.82,51.9-33.82,88.35c0,36.6,12.54,70.71,33.82,88.65L59.62,335.79z" />
-                <path id="smile-eye" fill="#fff" stroke-width="2"
-                    d="M166.04,255.17l-32.95-73.04L100,255.17H87.46l40.97-87.48h10.06l40.97,87.48H166.04z" />
-                <path id="mouth" fill="#fff" stroke-width="2"
-                    d="M193.3,326.46v-10.64h106.14v10.64H193.3z" />
-                <path id="star-eye" fill="#FF8C28" transform-origin="150px 70px" d="M349.74,200.78l8.31,29.45l-5.1,2.19l-15.31-27.85l-26.24,16.33l-3.21-4.81l22.02-20.27l-22.45-22.02l3.21-4.52l26.24,17.2
-l12.54-28.43l5.39,1.31l-5.83,29.89l28.87,0.58v5.54L349.74,200.78z" />
-                <path id="end-curve" fill="#fff" stroke-width="2" d="M446.4,242.63c0,38.34-13.85,71.73-46.07,93.16l-4.23-4.81c21.87-18.37,33.97-52.05,33.97-88.65
-c0-36.45-12.98-71.15-33.97-88.5l4.23-4.96c32.08,21.43,46.07,54.82,46.07,93.46V242.63z" />
-                <path id="smai-colon" fill="#fff" stroke-width="2" d="M482.7,271.21c8.02,0,20.56,8.75,20.56,23.76c0,17.06-15.75,26.68-29.74,30.62l-2.04-6.56
-c10.79-4.37,16.91-10.21,16.91-18.52c0-7.44-6.12-12.54-14-14.43c-1.02,0-2.92-1.9-2.92-5.69c0-5.54,5.39-9.18,10.93-9.18H482.7z
-M487.07,212.45c7.29,0,12.54,5.25,12.54,12.98c0,7.58-5.25,12.98-12.68,12.98s-12.83-5.39-12.83-12.98
-c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
-            </g>
-        </svg>
-    </a>
+	<a href="/">
 	
-	<slot/>
+		<svg version="1.1" id="salwa-coding" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100" height="80" viewBox="0 0 450 450"
+			xml:space="preserve">
+			<g class="face">
+				<path id="start-curve" fill="#fff" stroke-width="2" d="M59.62,335.79c-31.64-20.85-45.78-54.82-45.78-93.46v-0.15c0-38.49,14.14-72.02,45.78-93.31l4.37,5.1
+                     c-21.72,18.08-33.82,51.9-33.82,88.35c0,36.6,12.54,70.71,33.82,88.65L59.62,335.79z" />
+				<path id="smile-eye" fill="#fff" stroke-width="2"
+					d="M166.04,255.17l-32.95-73.04L100,255.17H87.46l40.97-87.48h10.06l40.97,87.48H166.04z" />
+				<path id="mouth" fill="#fff" stroke-width="2" d="M193.3,326.46v-10.64h106.14v10.64H193.3z" />
+				<path id="star-eye" fill="#FF8C28" transform-origin="150px 70px" d="M349.74,200.78l8.31,29.45l-5.1,2.19l-15.31-27.85l-26.24,16.33l-3.21-4.81l22.02-20.27l-22.45-22.02l3.21-4.52l26.24,17.2
+ 					l12.54-28.43l5.39,1.31l-5.83,29.89l28.87,0.58v5.54L349.74,200.78z" />
+				<path id="end-curve" fill="#fff" stroke-width="2" d="M446.4,242.63c0,38.34-13.85,71.73-46.07,93.16l-4.23-4.81c21.87-18.37,33.97-52.05,33.97-88.65
+ 					c0-36.45-12.98-71.15-33.97-88.5l4.23-4.96c32.08,21.43,46.07,54.82,46.07,93.46V242.63z" />
+				<path id="smai-colon" fill="#fff" stroke-width="2" d="M482.7,271.21c8.02,0,20.56,8.75,20.56,23.76c0,17.06-15.75,26.68-29.74,30.62l-2.04-6.56
+ 					c10.79-4.37,16.91-10.21,16.91-18.52c0-7.44-6.12-12.54-14-14.43c-1.02,0-2.92-1.9-2.92-5.69c0-5.54,5.39-9.18,10.93-9.18H482.7z
+ 					M487.07,212.45c7.29,0,12.54,5.25,12.54,12.98c0,7.58-5.25,12.98-12.68,12.98s-12.83-5.39-12.83-12.98
+ 					c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
+			</g>
+		</svg>
+	</a>
 
-    <div id="scroll-progress"></div>
-</div>
+	<slot />
+
+	<div id="scroll-progress"></div>
+</div> -->
 <style>
-    /* @-moz-keyframes marquee {
+	#global-header{
+		--header-item-spacing:.25rem;
+		
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-inline: .5rem;
+		position: relative;
+	}
+	
+	.main-nav .main-menu{	
+		display: flex;
+		align-items: center;
+	}
+	.main-nav .main-menu li:not(:last-child){
+		height: 30px;
+		line-height: 30px;
+	}
+	.main-nav .main-menu li{
+		margin:calc(2 * var(--header-item-spacing)) ;
+		text-transform: capitalize;
+	}
+	
+	#scroll-progress{
+		position: absolute;
+		bottom: 0;
+		left: 0%;
+	}
+	.secondary-nav{
+		position: fixed;
+		z-index: -10;
+		
+		background-color: var(--font-color);
+		color:var(--main-background-darker);
+		 top: 0;
+		left: 0;
+		/*right: 0;
+		height: 100%; */
+		transform: rotate(calc(var(--body-rotation) * -1) );
+	}
+	.secondary-nav .secondary-menu li a{
+		outline: 3px solid red;
+		color:var(--main-background-darker);
+		padding-inline:1rem ;
+		padding-block: 1rem;
+	}
+	/* @-moz-keyframes marquee {
 	0% {
 	  transform: translateX(100%);
 	}
@@ -75,8 +185,8 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
 	  left: 120%;
 	}
   } */
-/* scroll progress bar------ */
-/* #scroll-progress {
+	/* scroll progress bar------ */
+	/* #scroll-progress {
 	position: absolute;
 	bottom: 0;
 	width: 0%;
@@ -85,8 +195,8 @@ c0-7.73,5.39-12.98,12.83-12.98H487.07z" />
 	z-index: 10000;
 } */
 
-/* menu styling----------------- */
-/*.main-navigation ul.primary-menu {
+	/* menu styling----------------- */
+	/*.main-navigation ul.primary-menu {
 	 padding-top: 5rem;
 	position: absolute;
 
@@ -160,8 +270,8 @@ button.menu-toggle .dashicons-menu-alt:before {
 	
 
 } */
-/* set proper hight to the contat to get equal rotate in all pages it doesnt need to be spisfic value as the overflow well be hidden */
-/* .scroll-disapple .page-rotate{
+	/* set proper hight to the contat to get equal rotate in all pages it doesnt need to be spisfic value as the overflow well be hidden */
+	/* .scroll-disapple .page-rotate{
 	
 	height: 176rem;
 }
@@ -221,106 +331,102 @@ button.menu-toggle .dashicons-menu-alt:before {
 		margin: auto;
 	}
 } */
-
 </style>
 
 <script>
-	
-     gsap.to("#scroll-progress",{
-       width: "100%",
-      scrollTrigger:{
-      scrub: 0.3,//lock the animation to scrollbar position
-         toggleActions:'restart reverse none none',      
-         
-      }
-  })
-    //  // navigation-------------------------
+	gsap.to("#scroll-progress", {
+		width: "100%",
+		scrollTrigger: {
+			scrub: 0.3, //lock the animation to scrollbar position
+			toggleActions: 'restart reverse none none',
 
-( 
-	
-	function() {
-		
-	
-	const siteNavigation = document.getElementById( 'site-navigation' );
-	const htmlPage = document.querySelector('body');
-	const page = document.querySelector('.site');
-	const toggleBtn = document.querySelector('.menu-toggle');
-	const mainMenu = document.querySelector('.main-navigation');
-	const   mainMenuItmes = document.querySelectorAll('.main-navigation .menu-item a');
-	// Return early if the navigation doesn't exist.
-	if ( ! siteNavigation ) {
-		return;
-	}
-
-	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
-
-	// Return early if the button doesn't exist.
-	if ( 'undefined' === typeof button ) {
-		return;
-	}
-
-	const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
-
-	// Hide menu toggle button if menu is empty and return early.
-	if ( 'undefined' === typeof menu ) {
-		button.style.display = 'none';
-		return;
-	}
-
-	if ( ! menu.classList.contains( 'nav-menu' ) ) {
-		menu.classList.add( 'nav-menu' );
-	}
-
-	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
-	button.addEventListener( 'click', function() {
-		siteNavigation.classList.toggle( 'toggled' );
-
-		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
-			button.setAttribute( 'aria-expanded', 'false' );
-		} else {
-			button.setAttribute( 'aria-expanded', 'true' );
 		}
-	} );
-	
-	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-	document.addEventListener( 'click', function( event ) {
-		const isClickInside = siteNavigation.contains( event.target );
+	})
+	//  // navigation-------------------------
 
-		if ( ! isClickInside ) {
-			
-			page.classList.remove('page-rotate');
-			htmlPage.classList.remove('scroll-disapple');
-			toggleBtn.classList.remove('visible-menu');
-			siteNavigation.classList.remove( 'toggled' );
-			button.setAttribute( 'aria-expanded', 'false' );
-		}
-	} );
+	(
+
+		function () {
 
 
-	  function menuRotate() {
-		  if (mainMenu.classList.contains('toggled')) {
-			  page.classList.add('page-rotate');
-			  htmlPage.classList.add('scroll-disapple');
-			  toggleBtn.classList.add('visible-menu');
-		  }else{
-			  page.classList.remove('page-rotate');
-			  htmlPage.classList.remove('scroll-disapple');
-			  toggleBtn.classList.remove('visible-menu');
-		  }
-	  }
-	  toggleBtn.addEventListener('click', menuRotate);
-	  mainMenuItmes.forEach((menuItem)=>{
-		menuItem.addEventListener("click",()=>{
-			page.classList.remove('page-rotate');
-			htmlPage.classList.remove('scroll-disapple');
-			toggleBtn.classList.remove('visible-menu');
-			siteNavigation.classList.remove( 'toggled' );
-			button.setAttribute( 'aria-expanded', 'false' );
-		})
-	  })
-	  //   page.addEventListener('click',menuRotate);
-	// /////////////////////////////////
-}() );
+			const siteNavigation = document.getElementById('site-navigation');
+			const htmlPage = document.querySelector('body');
+			const page = document.querySelector('.site');
+			const toggleBtn = document.querySelector('.menu-toggle');
+			const mainMenu = document.querySelector('.main-navigation');
+			const mainMenuItmes = document.querySelectorAll('.main-navigation .menu-item a');
+			// Return early if the navigation doesn't exist.
+			if (!siteNavigation) {
+				return;
+			}
 
-    
+			const button = siteNavigation.getElementsByTagName('button')[0];
+
+			// Return early if the button doesn't exist.
+			if ('undefined' === typeof button) {
+				return;
+			}
+
+			const menu = siteNavigation.getElementsByTagName('ul')[0];
+
+			// Hide menu toggle button if menu is empty and return early.
+			if ('undefined' === typeof menu) {
+				button.style.display = 'none';
+				return;
+			}
+
+			if (!menu.classList.contains('nav-menu')) {
+				menu.classList.add('nav-menu');
+			}
+
+			// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
+			button.addEventListener('click', function () {
+				siteNavigation.classList.toggle('toggled');
+
+				if (button.getAttribute('aria-expanded') === 'true') {
+					button.setAttribute('aria-expanded', 'false');
+				} else {
+					button.setAttribute('aria-expanded', 'true');
+				}
+			});
+
+			// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
+			document.addEventListener('click', function (event) {
+				const isClickInside = siteNavigation.contains(event.target);
+
+				if (!isClickInside) {
+
+					page.classList.remove('page-rotate');
+					htmlPage.classList.remove('scroll-disapple');
+					toggleBtn.classList.remove('visible-menu');
+					siteNavigation.classList.remove('toggled');
+					button.setAttribute('aria-expanded', 'false');
+				}
+			});
+
+
+			function menuRotate() {
+				if (mainMenu.classList.contains('toggled')) {
+					page.classList.add('page-rotate');
+					htmlPage.classList.add('scroll-disapple');
+					toggleBtn.classList.add('visible-menu');
+				} else {
+					page.classList.remove('page-rotate');
+					htmlPage.classList.remove('scroll-disapple');
+					toggleBtn.classList.remove('visible-menu');
+				}
+			}
+			toggleBtn.addEventListener('click', menuRotate);
+			mainMenuItmes.forEach((menuItem) => {
+				menuItem.addEventListener("click", () => {
+					page.classList.remove('page-rotate');
+					htmlPage.classList.remove('scroll-disapple');
+					toggleBtn.classList.remove('visible-menu');
+					siteNavigation.classList.remove('toggled');
+					button.setAttribute('aria-expanded', 'false');
+				})
+			})
+			//   page.addEventListener('click',menuRotate);
+			// /////////////////////////////////
+		}());
 </script>
